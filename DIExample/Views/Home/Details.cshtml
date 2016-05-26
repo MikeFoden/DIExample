@@ -1,0 +1,38 @@
+﻿@model DIExample.ViewModels.ProductDetailedViewModel
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Details for " + Model.ProductName;
+}
+<h1 class="page-header">@Model.ProductName <small>(ID: @Model.ProductID)</small></h1>
+
+@if (Model.StockCount <= 5) // Let's consider this a 'low' stock count
+{
+	<div class="alert alert-warning alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>Warning!</strong> This product is running low on stock.
+	</div>
+}
+
+<div class="row">
+	<div class="col-xs-12 col-md-6">Product Name:<br/><strong>@Model.ProductName</strong></div>
+	<div class="col-xs-12 col-md-6">Category Name:<br /><strong>@Model.CategoryName</strong></div>
+	<div class="col-xs-12 col-md-6">Price:<br /><strong>$@Model.Price.ToString("#0.00")</strong></div>
+	<div class="col-xs-12 col-md-6">Stock Count:<br /><strong>@Model.StockCount</strong></div>
+	<div class="col-xs-12 col-md-6">Date Created:<br /><strong>@Model.DateCreated.Value.ToString()</strong></div>
+	<div class="col-xs-12 col-md-6">Date Updated:<br /><strong>@Model.DateUpdated.Value.ToString()</strong></div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<a class="btn btn-primary" href="@Url.Action("Edit", new { id = Model.ProductID })" role="button">Edit Product</a>
+		<a class="btn btn-info" href="@Url.Action("Index")" role="button">Return to Listing</a>
+	</div>
+</div>
+
+@section InlineScripts {
+	<script type="text/javascript">
+		// Ideally you would never put inline JavaScript in
+		$('.alert').on('close.bs.alert', function () {
+			$(this).addClass("fade");
+		});
+</script>
+}

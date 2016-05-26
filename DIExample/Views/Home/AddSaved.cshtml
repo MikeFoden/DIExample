@@ -1,0 +1,9 @@
+﻿@model DIExample.ViewModels.ProductViewModel
+
+<div id="newProduct" class="alert alert-success" role="alert">Your new product has been saved.</div>
+<div class="row">
+	<div class="col-xs-12">
+		<a class="btn btn-success" href="@Url.Action("Details", new { id = Model.ProductID })" role="button">View Product</a>
+		<a class="btn btn-info" href="@Url.Action("Index")" role="button">Return to Listing</a>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+﻿@model DIExample.ViewModels.ProductViewModel
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Edit Product";
+}
+<h1 class="page-header">Edit Product</h1>
+@using (Ajax.BeginForm("EditProduct", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "editForm", InsertionMode = InsertionMode.Replace }))
+{
+	<div id="editForm">
+		@{ Html.RenderPartial("_ProductForm", Model); }
+		<div class="row">
+			<div class="col-xs-12">
+				<button type="submit" class="btn btn-success">Save Product</button>
+				<a class="btn btn-info" href="@Url.Action("Index")" role="button">Return to Listing</a>
+			</div>
+		</div>
+	</div>
+}

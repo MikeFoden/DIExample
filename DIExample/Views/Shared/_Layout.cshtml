@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - Dependency Injection Example</title>
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/custom-style.css" rel="stylesheet" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<a class="navbar-brand" href="@Url.Action("Index")">Dependency Injection Example</a>
+	</nav>
+    <div class="container-fluid">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li>@Html.ActionLink("Product Listing", "Index")</li>
+				<li>@Html.ActionLink("Add Product", "Add")</li>
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			@RenderBody()
+		</div>
+	</div>
+	
+	<script src="~/scripts/jquery-2.2.2.min.js"></script>
+	<script src="~/scripts/bootstrap.min.js"></script>
+	<script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+	@RenderSection("InlineScripts", false);
+</body>
+</html>

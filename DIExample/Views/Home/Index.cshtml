@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DIExample.ViewModels.ProductViewModel>
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "Product Listing";
+}
+<h1 class="page-header">Product Listing</h1>
+
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Product Name</th>
+				<th>Category Name</th>
+				<th>Price</th>
+				<th>Stock Count</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var product in Model)
+			{
+				<tr>
+					<td>@product.ProductName</td>
+					<td>@product.CategoryName</td>
+					<td>$@product.Price.ToString("#0.00")</td>
+					<td>@product.StockCount.ToString()</td>
+					<td>
+						<a class="btn btn-xs btn-info" href="@Url.Action("Details", new { id = product.ProductID })" role="button"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> View</a>
+						<a class="btn btn-xs btn-primary" href="@Url.Action("Edit", new { id = product.ProductID })" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<a class="btn btn-primary" href="@Url.Action("Add")" role="button">Add Product</a>
+		</div>
+	</div>
